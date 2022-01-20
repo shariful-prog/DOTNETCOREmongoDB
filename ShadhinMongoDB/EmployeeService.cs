@@ -1,7 +1,6 @@
 ﻿using MongoDB.Driver;
 using ShadhinMongoDB.Models;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace ShadhinMongoDB
@@ -17,10 +16,10 @@ namespace ShadhinMongoDB
 
         }
 
-        public async Task<IQueryable<Employee>> Get()
+        public async Task<List<Employee>> Get()
         {
-            IQueryable<Employee> employees;
-            employees = (IQueryable<Employee>)await _employees.Find(emp => true).ToListAsync();
+            List<Employee> employees;
+            employees = await _employees.Find(emp => true).ToListAsync();
             return employees;
         }
 
